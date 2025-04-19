@@ -6,7 +6,7 @@ require("dotenv").config()
 
 let port =process.env.PORT || 3002
 let application=express();
-
+application.use(express.json())
 application.use("/web/",r)
 
 let add_user=async function(){
@@ -26,7 +26,7 @@ let add_user=async function(){
     }
 }
 db().then(()=>{
-    add_user()
+    // add_user()
 
     application.listen(port,()=>{
         console.log(`server created at http://localhost:${port}/web/`)
