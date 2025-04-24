@@ -11,25 +11,46 @@ export default function Register() {
 
 
     function clear(){
-        setName("")
+        setName("") 
         setEmail("")
         setPass("")
         setAge(0)
 
     }
     
-    function save_form(){
+   async function save_form(){
         try {
-            axios.post("http://localhost:3002/web/reg",{
-            name:name,
-            email:email,
-            password:pass,
-            age:age
-        })
-        console.log("data save succesfully")
-        toast.success("data enter successfully")
-        clear()
+            let pswd_regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+            let username_regex=/^[A-Za-z0-9_-]{3,15}$/
+            if(!name || !email || !pass || age ===0){
+                toast.error("All field are required")
+            }
+            else if(!pswd_regex.test(pass)){
+                toast.error("password invalid")
+            }
+            else if(!username_regex.test(name)){
+                toast.error("username invalid")
+            }
+            else if(age < 18){
+                toast.error("age greater then 18")
+            }
+            else{
+                await  axios.post("http://localhost:3002/web/reg",{
+                    name:name,
+                    email:email,
+                    password:pass,
+                    age:age
+                })
+                console.log("data save succesfully")
+                toast.success("data enter successfully")
+                clear()
+
+            }
+      
         } catch (error) {
+            if(error.status ===409){
+                toast.error('email already exist')
+            }
             toast.error(error)
             console.log(error)
             
@@ -38,7 +59,7 @@ export default function Register() {
     }
   return (
     <div className='container'>
-          {/* <ToastContainer/> */}
+          
         <h2>user Registeration form</h2><hr />
         <p>enter your name</p>
         <input type="text" placeholder='enter name' className='form-control my-2'value={name} 
@@ -58,7 +79,7 @@ export default function Register() {
 
         <button className='btn btn-primary my-2' onClick={save_form}>submit</button>
        
-      
+        <ToastContainer/>
 
     </div>
   )
