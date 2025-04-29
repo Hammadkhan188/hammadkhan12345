@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Register from './Component/Register';
+import Showdata from './Component/Showdata';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Register/>}/>
+        <Route path='/get' element={<Showdata/>}/>
       </Routes>
     </div>
     </BrowserRouter>
