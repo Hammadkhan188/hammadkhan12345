@@ -1,6 +1,8 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Register from './Component/Register';
 import Showdata from './Component/Showdata';

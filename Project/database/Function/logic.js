@@ -34,6 +34,36 @@ let main_function={
         } catch (error) {
             res.status(501).json({msg :error.message})
         }
+     
+    },
+    delete_record:async function (req,res){
+        try {
+            let {id} =req.params
+            let id_dhoundo =await user.findById(id)
+            if (id_dhoundo) {
+                await user.findByIdAndDelete(id_dhoundo)
+                return res.status(200).json({msg:'record added succesfully'})
+                
+            } 
+        }catch(e){
+            res.status(501).json({msg:'record added succesfully'})
+        }
+    },
+    update_record:async function(req,res){
+       try {
+        let {id} =req.params
+        let {name,email,age}=req.body
+
+        let id_dhoundo =await user.findById(id);
+        if (id_dhoundo) {
+            await user .findByIdAndUpdate(id,{name:name,email:email,age:age})
+            res.status(200).json({msg:"Record Update Successfully"})
+        } 
+        
+       } catch (error) {
+        res.status(501).json({msg:error.message})
+        
+       }
     }
 }
 module.exports= main_function
