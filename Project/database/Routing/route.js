@@ -7,5 +7,6 @@ route.post("/reg",func.register_user)
 route.get("/users",func.get_user)
 route.delete("/users/:id",func.delete_record)
 route.put("/users/:id",func.update_record)
+route.post("/log",func.login_work)
 
 module.exports=route

@@ -2,7 +2,7 @@ import { toast ,ToastContainer} from 'react-toastify';
 import React, { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios"
-
+import {Link} from "react-router-dom"
 export default function Register() {
     let [name,setName] = useState("")
     let [email,setEmail] = useState("")
@@ -78,6 +78,8 @@ export default function Register() {
         onChange={(e)=>setAge(e.target.value)} />
 
         <button className='btn btn-primary my-2' onClick={save_form}>submit</button>
+
+        <Link to="/log">Please Login Now</Link>
        
         <ToastContainer/>
 
