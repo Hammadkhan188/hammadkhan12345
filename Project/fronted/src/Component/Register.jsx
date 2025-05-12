@@ -8,6 +8,7 @@ export default function Register() {
     let [email,setEmail] = useState("")
     let [pass,setPass] = useState("")
     let [age,setAge]= useState(0)
+    
 
 
     function clear(){

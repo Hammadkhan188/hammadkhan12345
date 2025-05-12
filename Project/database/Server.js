@@ -18,7 +18,7 @@ let add_user=async function(){
             email:"hammad@gmail.com",
             password:"1234",
             age:"20",
-            country:"Pakistan"
+            Phone:"03132677651"
         })
         console.log("user Record Added")
         
